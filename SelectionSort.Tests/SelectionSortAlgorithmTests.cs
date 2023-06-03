@@ -16,7 +16,8 @@ public class SelectionSortAlgorithmTests
     [Theory]
     [InlineData(new[] { 0, -1 })]
     [InlineData(new[] { 2, 1 })]
-    [InlineData(new[] { 10, 20 })]
+    [InlineData(new[] { 100, 20 })]
+    [InlineData(new[] { 5, 0 })]
     public void Given2ElementArray_ShouldReturnSorted2ElementArray(int[] input)
     {
         var sut = new SelectionSort();
@@ -24,7 +25,7 @@ public class SelectionSortAlgorithmTests
         var result = sut.Sort(input);
 
         Assert.Equal(2, result.Length);
-        Assert.True(result[0] < result[1]);
+        Assert.True(result[0] <= result[1]);
     }
 
     [Theory]

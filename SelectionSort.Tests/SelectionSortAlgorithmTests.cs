@@ -5,12 +5,13 @@ public class SelectionSortAlgorithmTests
     [Fact]
     public void GivenOneElementArray_ShouldReturnInputArray()
     {
-        var input = new[] { 1 };
+        var array = new[] { 1 };
+        var expected = new[] { array[0] };
         var sut = new SelectionSort();
 
-        var result = sut.Sort(input);
+        sut.Sort(array);
 
-        Assert.Equal(result, input);
+        Assert.Equal(expected, array);
     }
 
     [Theory]
@@ -18,28 +19,75 @@ public class SelectionSortAlgorithmTests
     [InlineData(new[] { 2, 1 })]
     [InlineData(new[] { 100, 20 })]
     [InlineData(new[] { 5, 0 })]
-    public void Given2ElementArray_ShouldReturnSorted2ElementArray(int[] input)
+    public void Given2ElementArray_ShouldReturnSorted2ElementArray(int[] array)
     {
         var sut = new SelectionSort();
 
-        var result = sut.Sort(input);
+        sut.Sort(array);
 
-        Assert.Equal(2, result.Length);
-        Assert.True(result[0] <= result[1]);
+        Assert.Equal(2, array.Length);
+        Assert.True(array[0] <= array[1]);
     }
 
     [Theory]
     [InlineData(new[] { 2, 1, 52, -400, 12 })]
     [InlineData(new[] { 10, 20, 111, 0, 0, 1, -5, -45, -55, 1111 })]
-    public void GivenAnyArray_ShouldReturnSortedArray(int[] input)
+    public void GivenAnyArray_ShouldReturnSortedArray(int[] array)
     {
         var sut = new SelectionSort();
 
-        var result = sut.Sort(input);
+        sut.Sort(array);
 
-        for (int i = 0; i < result.Length - 1; i++)
+        for (int i = 0; i < array.Length - 1; i++)
         {
-            Assert.True(result[i] <= result[i + 1]);
+            Assert.True(array[i] <= array[i + 1]);
         }
+    }
+
+    [Theory]
+    [InlineData(new[] { 10.5, -45.55, 555.12, 555.12, 0.0, 1054.5 })]
+    [InlineData(new[] { 789.1, -2558.5556, -56565.55555, -656.0, 154756.66555, 0.5 })]
+    public void GivenDoubleTypeArray_ShouldReturnSortedArray(double[] array)
+    {
+        var sut = new SelectionSort();
+
+        sut.Sort(array);
+
+        for (var i = 0; i < array.Length - 1; i++)
+        {
+            Assert.True(array[i] <= array[i + 1]);
+        }
+    }
+
+    [Fact]
+    public void GivenStringTypeArray_ShouldReturnSortedArray()
+    {
+        var array = new[] { "Zofia", "Adam", "Krystyna", "Wojciech", "Zenon", "Marcin" };
+        var sut = new SelectionSort();
+
+        sut.Sort(array);
+
+        for (var i = 0; i < array.Length - 1; i++)
+        {
+            Assert.True(array[i].CompareTo(array[i + 1]) <= 0);
+        }
+    }
+
+    [Fact]
+    public void GivenOneElementStringTypeNullArray_ShouldThrowException()
+    {
+        string[] array = { null };
+        var sut = new SelectionSort();
+
+        Assert.Throws<NullReferenceException>(() => sut.Sort(array));
+    }
+
+    [Fact]
+    public void GivenTwoElementStringTypArrayWithNull_ShouldThrowException()
+    {
+        string[] array = { string.Empty, null };
+        var sut = new SelectionSort();
+
+        Assert.Throws<NullReferenceException>(() => sut.Sort(array));
     }
 }

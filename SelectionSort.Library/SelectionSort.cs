@@ -1,6 +1,6 @@
-﻿namespace SelectionSort;
+﻿namespace SelectionSort.Library;
 
-public class SelectionSort
+public class SelectionSortManager
 {
     public T[] Sort<T>(T[] array) where T : IComparable
     {

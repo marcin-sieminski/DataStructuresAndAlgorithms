@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SelectionSort\SelectionSort.csproj" />
+    <ProjectReference Include="..\SelectionSort.Library\SelectionSort.Library.csproj" />
   </ItemGroup>
 
 </Project>

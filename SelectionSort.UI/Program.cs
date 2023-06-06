@@ -1,7 +1,7 @@
-﻿using System.Diagnostics;
+﻿using SelectionSort.Library;
+using System.Diagnostics;
 
 var continueRun = true;
-var sortManager = new SelectionSort.Library.SelectionSortManager();
 
 do
 {
@@ -28,7 +28,7 @@ do
                 Console.Write($"{item} ");
             }
             Console.WriteLine();
-            sortManager.Sort(arraySimple);
+            SelectionSortHelper.Sort(arraySimple);
             Console.WriteLine("\nPo sortowaniu:");
             foreach (var item in arraySimple)
             {
@@ -48,7 +48,7 @@ do
                 Console.Write($"{item} ");
             }
             Console.WriteLine();
-            sortManager.Sort(arrayComplex);
+            SelectionSortHelper.Sort(arrayComplex);
             Console.WriteLine("\nPo sortowaniu:");
             foreach (var item in arrayComplex)
             {

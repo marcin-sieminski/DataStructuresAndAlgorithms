@@ -7,9 +7,8 @@ public class SelectionSortAlgorithmTests
     {
         var array = new[] { 1 };
         var expected = new[] { array[0] };
-        var sut = new SelectionSortManager();
 
-        sut.Sort(array);
+        SelectionSortHelper.Sort(array);
 
         Assert.Equal(expected, array);
     }
@@ -21,9 +20,7 @@ public class SelectionSortAlgorithmTests
     [InlineData(new[] { 5, 0 })]
     public void Given2ElementArray_ShouldReturnSorted2ElementArray(int[] array)
     {
-        var sut = new SelectionSortManager();
-
-        sut.Sort(array);
+        SelectionSortHelper.Sort(array);
 
         Assert.Equal(2, array.Length);
         Assert.True(array[0] <= array[1]);
@@ -34,9 +31,7 @@ public class SelectionSortAlgorithmTests
     [InlineData(new[] { 10, 20, 111, 0, 0, 1, -5, -45, -55, 1111 })]
     public void GivenAnyArray_ShouldReturnSortedArray(int[] array)
     {
-        var sut = new SelectionSortManager();
-
-        sut.Sort(array);
+        SelectionSortHelper.Sort(array);
 
         for (int i = 0; i < array.Length - 1; i++)
         {
@@ -49,9 +44,7 @@ public class SelectionSortAlgorithmTests
     [InlineData(new[] { 789.1, -2558.5556, -56565.55555, -656.0, 154756.66555, 0.5 })]
     public void GivenDoubleTypeArray_ShouldReturnSortedArray(double[] array)
     {
-        var sut = new SelectionSortManager();
-
-        sut.Sort(array);
+        SelectionSortHelper.Sort(array);
 
         for (var i = 0; i < array.Length - 1; i++)
         {
@@ -63,9 +56,8 @@ public class SelectionSortAlgorithmTests
     public void GivenStringTypeArray_ShouldReturnSortedArray()
     {
         var array = new[] { "Zofia", "Adam", "Krystyna", "Wojciech", "Zenon", "Marcin" };
-        var sut = new SelectionSortManager();
 
-        sut.Sort(array);
+        SelectionSortHelper.Sort(array);
 
         for (var i = 0; i < array.Length - 1; i++)
         {
@@ -77,17 +69,15 @@ public class SelectionSortAlgorithmTests
     public void GivenOneElementStringTypeNullArray_ShouldThrowException()
     {
         string[] array = { null };
-        var sut = new SelectionSortManager();
 
-        Assert.Throws<NullReferenceException>(() => sut.Sort(array));
+        Assert.Throws<NullReferenceException>(() => SelectionSortHelper.Sort(array));
     }
 
     [Fact]
     public void GivenTwoElementStringTypArrayWithNull_ShouldThrowException()
     {
         string[] array = { string.Empty, null };
-        var sut = new SelectionSortManager();
 
-        Assert.Throws<NullReferenceException>(() => sut.Sort(array));
+        Assert.Throws<NullReferenceException>(() => SelectionSortHelper.Sort(array));
     }
 }
